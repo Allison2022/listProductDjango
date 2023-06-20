@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from .models import Comment
 from .forms import CommentForm, ContactForm
 
@@ -40,8 +41,13 @@ def update(request, pk):
     return render(request, 'update.html', context)
 
 # contact function
+# @csrf_exempt decorator for not required toquen
 def contact(request):
-    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+    else:
+        form = ContactForm()
+        
     context = {
         "form":form,
     }

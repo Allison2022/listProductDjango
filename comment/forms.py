@@ -24,4 +24,8 @@ class CommentForm(ModelForm):
 
 # form not related to a model
 class ContactForm(forms.Form):
-    name = forms.CharField(initial='Erik')
+    # name = forms.CharField(label='Name', initial='Erik', disabled=False, help_text='your name...', max_length=10, min_length=2)
+    name = forms.CharField(label='Name', max_length=10, min_length=2)
+    surname = forms.CharField(label='Surname', required=False, max_length=10, min_length=2)
+    phone = forms.RegexField(label='phone', regex="^\d{3}-\d{3}-\d{4}$", max_length=12, min_length=10)
+    birth_date = forms.DateField(label='birth date')
