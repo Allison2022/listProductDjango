@@ -1,0 +1,6 @@
+FROM postgres:15.3
+ENV POSTGRES_USER=erik1288
+ENV POSTGRES_PASSWORD=ingeniero010
+ENV POSTGRES_DB=djangoDb
+WORKDIR /data
+COPY . /data/
